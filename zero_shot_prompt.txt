@@ -1,0 +1,12 @@
+import re
+
+def to_snake_case(s: str) -> str:
+    # Split camelCase/PascalCase, replace non-word chars with underscores, collapse duplicates, lowercase, trim
+    s = re.sub(r'([a-z0-9])([A-Z])', r'\1_\2', s)
+    s = re.sub(r'[^0-9A-Za-z]+', '_', s)
+    s = re.sub(r'_+', '_', s)
+    return s.strip('_').lower()
+
+# Examples:
+# to_snake_case("HelloWorld") -> "hello_world"
+# to_snake_case("  Make-this:Snake Case!! ") -> "make_this_snake_case"
